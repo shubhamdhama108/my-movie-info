@@ -19,7 +19,7 @@ window.onload=()=>{
 };
 
 function getMovies(searchText){
-    axios.get(' http://www.omdbapi.com?s='+searchText+'&apikey=e0e160d')
+    axios.get(' https://www.omdbapi.com?s='+searchText+'&apikey=e0e160d')
     .then((response)=>{
         console.log(response);
         let movies = response.data.Search;
