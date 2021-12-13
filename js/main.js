@@ -44,59 +44,58 @@ function getMovies(searchText){
     })
 }
 
+function movieSelected(id){
+    sessionStorage.setItem('movieId',id);
+    window.location='movie.html';
+    return false;
+}
 
+// (' http://www.omdbapi.com?s='+movieId+'&apikey=e0e160d')
 
-//  function myFunction(){
-    // let form=document.getElementById('searchForm');
-    // form.addEventListener('submit',(e)=>{
-    //     // e.preventDefault;
-    //    let searchText= document.getElementById('searchText').value;
-    //     // console.log(searchText);
-    //     getMovies(searchText);
-        
-    // });
-// }
+function getMovie(){
+    let movieId= sessionStorage.getItem('movieId');
+    axios.get('http://www.omdbapi.com?i='+movieId+'&apikey=thewdb')
+    .then((response)=>{
+        console.log(response);
+        let movie = response.data;
 
-// function getMovies(searchText){
-//     console.log(searchText);
+        let output =`
+          <div class="row">
+            <div class="col-md-4">
+               <img src="${movie.Poster}" class="thumbnail">
+            </div>
+            <div class="col-md-8">
+                <h2>${movie.Title}</h2>
+                <ul class="list-group">
+                   <li class="list-group-item"><strong>Genre:</strong>${movie.Genre}</li>
+                   <li class="list-group-item"><strong>Released:</strong>${movie.Released}</li>
+                   <li class="list-group-item"><strong>Rated:</strong>${movie.Rated}</li>
+                   <li class="list-group-item"><strong>IMDB:</strong>${movie.IMDB}</li>
+                   <li class="list-group-item"><strong>Director:</strong>${movie.Director}</li>
+                   <li class="list-group-item"><strong>Writer:</strong>${movie.Writer}</li>
+                   <li class="list-group-item"><strong>Actors:</strong>${movie.Actors}</li>
+                </ul>
+            </div>
+          </div>  
+          <div class="row">
+        <div class="well">
+            <h3>Plot</h3>
+            ${movie.Plot}
+            <hr>
+            <a href="http://imdb.com/title/${movie.imdbID}" target="blank" class="btn btn-primary">View IMDB</a>
+            <a href="index.html" class="btn btn-default">Go back to search</a>
+        </div>
+    </div>
 
-// }
-// var text;
-// myfunction();
-// console.log(text);
+        `;
 
-// function myfunction() {
-//     document.getElementById('searchForm').addEventListener('submit',(e)=>{
-//         text=document.getElementById('searchText').value;
-//         console.log(text);
-//         // e.preventDefault;
-//     });
+        $('#movie').html(output);
+       
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
 
-// }
-
-
-
-    
-    
-
-
-
-// var input = document.getElementById('searchText');
-// // console.log(input);
-// console.log("hello");
-// window.onload=handleinput;
-
-// function handleKey(e) {
-//  if(e.key=='Enter'){
-//      const text=e.target.value;
-//      console.log(text);
-//  }
-    
-// }
-
-// function handleinput() {
-    
-// input.addEventListener('keyup',handleKey);
-// }
 
 
