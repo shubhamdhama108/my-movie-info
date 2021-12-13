@@ -1,3 +1,10 @@
+body {
+  background-image: url(movie4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 #movies img,
 #movie img {
   width: 100%;
@@ -19,4 +26,10 @@
 h5 {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.navbar-header a {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e9fcfc;
 }
