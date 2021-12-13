@@ -1,0 +1,20 @@
+#movies img,
+#movie img {
+  width: 100%;
+}
+
+#movies .col-md-3 .well {
+  height: 450px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #242321;
+}
+
+#movies .col-md-3 img {
+  height: 300px;
+}
+
+h5 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
